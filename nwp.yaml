@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: swiggy-clone-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: swiggy-clone
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: swiggy-clone
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: swiggy-clone

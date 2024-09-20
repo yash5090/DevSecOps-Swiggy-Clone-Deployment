@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swiggy-clone-deployment
+spec:
+  replicas: 6  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: swiggy-clone
+  template:
+    metadata:
+      labels:
+        app: swiggy-clone
+    spec:
+      containers:
+      - name: swiggy-clone
+        image: yash5090/swiggy-clone:latest
+        ports:
+        - containerPort: 3000
